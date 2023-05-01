@@ -1,11 +1,29 @@
 import { GetServerSideProps } from "next";
+import AuthService from "../services/auth.service";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import routes from "../routes";
 
 const Topbar = () => {
+  const router = useRouter();
+
+  const { search } = router.query;
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearchUrl = (field: any, value: any) => {
+    const route = routes.shop + `&${field}=${value}`;
+    router.push(route);
+  };
+
+  useEffect(() => {
+    setSearchTerm(search?.toString() ?? "");
+  }, [search]);
   return (
     <div className="container-fluid">
       <div className="row bg-secondary py-2 px-xl-5">
         <div className="col-lg-6 d-none d-lg-block">
-          <div className="d-inline-flex align-items-center">
+          {/* <div className="d-inline-flex align-items-center">
             <a className="text-dark" href="">
               FAQs
             </a>
@@ -17,7 +35,7 @@ const Topbar = () => {
             <a className="text-dark" href="">
               Support
             </a>
-          </div>
+          </div> */}
         </div>
         <div className="col-lg-6 text-center text-lg-right">
           <div className="d-inline-flex align-items-center">
@@ -51,12 +69,23 @@ const Topbar = () => {
           </a>
         </div>
         <div className="col-lg-6 col-6 text-left">
-          <form action="">
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              handleSearchUrl("search", searchTerm);
+            }}
+          >
             <div className="input-group">
               <input
+                value={searchTerm}
                 type="text"
                 className="form-control"
                 placeholder="Search for products"
+                onInput={(event) => {
+                  event.preventDefault();
+                  const { value } = event.currentTarget;
+                  setSearchTerm(value);
+                }}
               />
               <div className="input-group-append">
                 <span className="input-group-text bg-transparent text-primary">
@@ -66,16 +95,18 @@ const Topbar = () => {
             </div>
           </form>
         </div>
-        <div className="col-lg-3 col-6 text-right">
-          <a href="" className="btn border">
-            <i className="fas fa-heart text-primary"></i>
-            <span className="badge">0</span>
-          </a>
-          <a href="" className="btn border">
-            <i className="fas fa-shopping-cart text-primary"></i>
-            <span className="badge">0</span>
-          </a>
-        </div>
+        {AuthService.isLogin() && (
+          <div className="col-lg-3 col-6 text-right">
+            <a href="" className="btn border">
+              <i className="fas fa-heart text-primary"></i>
+              <span className="badge">0</span>
+            </a>
+            {/* <a href="" className="btn border">
+              <i className="fas fa-shopping-cart text-primary"></i>
+              <span className="badge">0</span>
+            </a> */}
+          </div>
+        )}
       </div>
     </div>
   );

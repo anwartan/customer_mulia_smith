@@ -1,4 +1,8 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
+import AuthService from "../services/auth.service";
+import routes from "../routes";
+import NavItem from "./NavItem";
 
 const Navbar = ({ showCarousel = false }) => {
   return (
@@ -91,16 +95,11 @@ const Navbar = ({ showCarousel = false }) => {
               id="navbarCollapse"
             >
               <div className="navbar-nav mr-auto py-0">
-                <Link href="/" className="nav-item nav-link active">
-                  Home
-                </Link>
-                <Link href="/shop" className="nav-item nav-link">
-                  Shop
-                </Link>
-                <Link href="/detail" className="nav-item nav-link">
-                  Shop Detail
-                </Link>
-                <div className="nav-item dropdown">
+                <NavItem href={routes.home} title={"Home"}></NavItem>
+                <NavItem href={routes.shop} title={"Shop"}></NavItem>
+                <NavItem href={routes.contact} title={"Contact"}></NavItem>
+
+                {/* <div className="nav-item dropdown">
                   <a
                     href="#"
                     className="nav-link dropdown-toggle"
@@ -109,26 +108,22 @@ const Navbar = ({ showCarousel = false }) => {
                     Pages
                   </a>
                   <div className="dropdown-menu rounded-0 m-0">
-                    <Link href="cart" className="dropdown-item">
+                    <Link href="cart" className={`dropdown-item `}>
                       Shopping Cart
                     </Link>
                     <Link href="checkout" className="dropdown-item">
                       Checkout
                     </Link>
                   </div>
+                </div> */}
+              </div>
+
+              {!AuthService.isLogin() && (
+                <div className="navbar-nav ml-auto py-0">
+                  <NavItem href={routes.login} title={"Login"}></NavItem>
+                  <NavItem href={routes.register} title={"Register"}></NavItem>
                 </div>
-                <Link href="contact" className="nav-item nav-link">
-                  Contact
-                </Link>
-              </div>
-              <div className="navbar-nav ml-auto py-0">
-                <Link href="/login" className="nav-item nav-link">
-                  Login
-                </Link>
-                <Link href="/register" className="nav-item nav-link">
-                  Register
-                </Link>
-              </div>
+              )}
             </div>
           </nav>
           {showCarousel && (

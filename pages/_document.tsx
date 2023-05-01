@@ -1,8 +1,4 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import Footer from "../components/Footer";
-import Topbar from "../components/Topbar";
-import Navbar from "../components/Navbar";
-import Modal from "../components/Modal";
 
 class MyDocument extends Document {
   render() {
@@ -21,11 +17,8 @@ class MyDocument extends Document {
           />
         </Head>
         <body>
-          <Topbar></Topbar>
-          <Navbar></Navbar>
           <Main />
           <NextScript />
-          <Footer></Footer>
           <div id="modal-root"></div>
 
           <script
@@ -37,12 +30,12 @@ class MyDocument extends Document {
             defer
           ></script>
 
-          <script src="lib/easing/easing.js" defer></script>
-          <script src="lib/owlcarousel/owl.carousel.min.js" defer></script>
-          <script src="mail/jqBootstrapValidation.min.js" defer></script>
-          <script src="mail/contact.js" defer></script>
+          <script src="/lib/easing/easing.js" defer></script>
+          <script src="/lib/owlcarousel/owl.carousel.min.js" defer></script>
+          <script src="/mail/jqBootstrapValidation.min.js" defer></script>
+          <script src="/mail/contact.js" defer></script>
 
-          <script src="js/main.js" defer></script>
+          <script src="/js/main.js" defer></script>
         </body>
       </Html>
     );

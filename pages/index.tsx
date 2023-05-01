@@ -13,12 +13,12 @@ import Modal from "../components/Modal";
 const Home: NextPage = () => {
   return (
     <div>
-      <Feature></Feature>
-      <Category></Category>
-      <Offer></Offer>
+      {/* <Feature></Feature>
+      <Category></Category> */}
+      {/* <Offer></Offer> */}
       <Products></Products>
       <Subscribe></Subscribe>
-      <Products></Products>
+      {/* <Products></Products> */}
       {/* <Vendor></Vendor> */}
     </div>
   );

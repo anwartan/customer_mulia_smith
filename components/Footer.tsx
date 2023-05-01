@@ -112,7 +112,7 @@ const Footer = () => {
           <p className="mb-md-0 text-center text-md-left text-dark">
             &copy;{" "}
             <a className="text-dark font-weight-semi-bold" href="#">
-              Your Site Name
+              MuliaSmith
             </a>
             . All Rights Reserved. Designed by
             <a

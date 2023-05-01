@@ -1,7 +1,88 @@
-function Sidebar() {
+import { ChangeEvent, use, useEffect, useState } from "react";
+import { Category } from "../../pages/shop/shop.model";
+import { Callback } from "../../utils/types";
+import { useRouter } from "next/router";
+import Skeleton from "../Skeleton";
+
+interface props {
+  categories?: Array<Category>;
+  onCheckCategory: Callback<String[]>;
+}
+
+const Sidebar = ({ categories = [], onCheckCategory }: props) => {
+  const router = useRouter();
+
+  const { category } = router.query;
+  const [selectedCategories, setSelectedCategories] = useState<String[]>([]);
+
+  const isCheck = (selectedCategory: Category): boolean => {
+    return (
+      selectedCategories.findIndex(
+        (item) => item == selectedCategory.category_code
+      ) !== -1
+    );
+  };
+
+  function handleCategoryChange(event: ChangeEvent<HTMLInputElement>) {
+    const categoryValue = event.target.value;
+    const isChecked = event.target.checked;
+    let newCategory = [];
+    if (isChecked) {
+      newCategory = [...selectedCategories, categoryValue];
+    } else {
+      newCategory = selectedCategories.filter(
+        (selectedCategory) => selectedCategory !== categoryValue
+      );
+    }
+
+    setSelectedCategories(newCategory);
+    // Update the URL query params
+    onCheckCategory(newCategory);
+  }
+
+  useEffect(() => {
+    console.log(category);
+    if (category) {
+      setSelectedCategories(Array.isArray(category) ? category : [category]);
+    } else {
+      setSelectedCategories([]);
+    }
+  }, [category]);
+
   return (
     <div className="col-lg-3 col-md-12">
       <div className="border-bottom mb-4 pb-4">
+        <h5 className="font-weight-semi-bold mb-4">Filter by category</h5>
+        <form>
+          {categories.map((item, index) => (
+            <div
+              key={index}
+              className="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3"
+            >
+              <input
+                type="checkbox"
+                className="custom-control-input"
+                checked={isCheck(item)}
+                id={item.category_code}
+                value={item.category_code}
+                onChange={(event) => {
+                  handleCategoryChange(event);
+                }}
+              />
+              <label
+                className="custom-control-label"
+                htmlFor={item.category_code}
+              >
+                {item.category_name}
+              </label>
+              <span className="badge border font-weight-normal">
+                {item.product_count}
+              </span>
+            </div>
+          ))}
+        </form>
+      </div>
+      {/* <div className="border-bottom mb-4 pb-4">
         <h5 className="font-weight-semi-bold mb-4">Filter by price</h5>
         <form>
           <div className="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
@@ -216,9 +297,24 @@ function Sidebar() {
             <span className="badge border font-weight-normal">168</span>
           </div>
         </form>
+      </div> */}
+    </div>
+  );
+};
+
+export const SideBarSkeleton = () => {
+  return (
+    <div className="col-lg-3 col-md-12">
+      <div className="border-bottom mb-4 pb-4">
+        <h5 className="font-weight-semi-bold mb-4">
+          <Skeleton></Skeleton>
+        </h5>
+        <Skeleton></Skeleton>
+        <Skeleton></Skeleton>
+        <Skeleton></Skeleton>
       </div>
     </div>
   );
-}
+};
 
 export default Sidebar;
