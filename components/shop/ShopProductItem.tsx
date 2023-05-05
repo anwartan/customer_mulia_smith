@@ -11,7 +11,7 @@ interface Props {
   onWishList: Callback<string>;
 }
 
-const ShopProductItem = ({ wishList, item, onWishList }: Props) => {
+export const ShopProductItem = ({ wishList, item, onWishList }: Props) => {
   return (
     <div className="card product-item border-0 mb-4">
       <div className="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
@@ -105,5 +105,3 @@ export const ShopProductItemSkeleton = () => {
 
   return <>{items}</>;
 };
-
-export default ShopProductItem;
