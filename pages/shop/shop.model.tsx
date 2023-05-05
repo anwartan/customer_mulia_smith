@@ -1,3 +1,5 @@
+import ProductStatusEnum from "../../enums/ProductStatusEnum";
+
 export interface ProductAdditionalInfo {
   label: string;
   value: string;
@@ -7,12 +9,11 @@ export interface Product {
   product_description: string;
   sku: string;
   image_path: string;
-  status: string;
+  status: ProductStatusEnum;
   link_url_shopee: string;
   link_url_tokopedia: string;
-  category_id: string;
-  created_at: string;
-  updated_at: string;
+  created_at: number;
+  updated_at: number;
   full_image_path: string;
   product_summary: string;
   product_additional_infos: Array<ProductAdditionalInfo>;

@@ -1,98 +1,87 @@
 import { GetServerSideProps } from "next";
+import CompanyProfile from "../config/CompanyProfile";
+import routes from "../config/Routes";
+import Link from "next/link";
+import useForm from "../utils/UseForm";
+import apiUrls from "../config/ApiUrls";
 const Footer = () => {
+  const { values, errors, handleChange, handleBlur, handleSubmit } = useForm(
+    apiUrls.newsSubscribe,
+    {
+      email: "",
+      name: "",
+    },
+    (values) => {
+    }
+  );
   return (
     <div className="container-fluid bg-secondary text-dark mt-5 pt-5">
       <div className="row px-xl-5 pt-5">
         <div className="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
           <a href="" className="text-decoration-none">
-            <h1 className="mb-4 display-5 font-weight-semi-bold">
-              <span className="text-primary font-weight-bold border border-white px-3 mr-1">
-                E
-              </span>
-              Shopper
+            <h1 className="mb-4 display-5 font-weight-semi-bold dancing-script-font">
+              {CompanyProfile.storeName}
             </h1>
           </a>
-          <p>
-            Dolore erat dolor sit lorem vero amet. Sed sit lorem magna, ipsum no
-            sit erat lorem et magna ipsum dolore amet erat.
+          <p>{CompanyProfile.description}</p>
+          <p className="mb-2">
+            <i className="fa fa-map-marker-alt text-primary mr-3"></i>
+            {CompanyProfile.storeLocation}
           </p>
           <p className="mb-2">
-            <i className="fa fa-map-marker-alt text-primary mr-3"></i>123
-            Street, New York, USA
-          </p>
-          <p className="mb-2">
-            <i className="fa fa-envelope text-primary mr-3"></i>info@example.com
+            <i className="fa fa-envelope text-primary mr-3"></i>
+            {CompanyProfile.storeEmail}
           </p>
           <p className="mb-0">
-            <i className="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890
+            <i className="fa fa-phone-alt text-primary mr-3"></i>
+            {CompanyProfile.storePhone}
           </p>
         </div>
         <div className="col-lg-8 col-md-12">
           <div className="row">
-            <div className="col-md-4 mb-5">
+            <div className="col-md-8 mb-5">
               <h5 className="font-weight-bold text-dark mb-4">Quick Links</h5>
               <div className="d-flex flex-column justify-content-start">
-                <a className="text-dark mb-2" href="index.html">
+                <Link className="text-dark mb-2" href={routes.home}>
                   <i className="fa fa-angle-right mr-2"></i>Home
-                </a>
-                <a className="text-dark mb-2" href="shop.html">
+                </Link>
+                <Link className="text-dark mb-2" href={routes.shop}>
                   <i className="fa fa-angle-right mr-2"></i>Our Shop
-                </a>
-                <a className="text-dark mb-2" href="detail.html">
-                  <i className="fa fa-angle-right mr-2"></i>Shop Detail
-                </a>
-                <a className="text-dark mb-2" href="cart.html">
-                  <i className="fa fa-angle-right mr-2"></i>Shopping Cart
-                </a>
-                <a className="text-dark mb-2" href="checkout.html">
-                  <i className="fa fa-angle-right mr-2"></i>Checkout
-                </a>
-                <a className="text-dark" href="contact.html">
+                </Link>
+                <Link className="text-dark" href={routes.contact}>
                   <i className="fa fa-angle-right mr-2"></i>Contact Us
-                </a>
+                </Link>
               </div>
             </div>
-            <div className="col-md-4 mb-5">
-              <h5 className="font-weight-bold text-dark mb-4">Quick Links</h5>
-              <div className="d-flex flex-column justify-content-start">
-                <a className="text-dark mb-2" href="index.html">
-                  <i className="fa fa-angle-right mr-2"></i>Home
-                </a>
-                <a className="text-dark mb-2" href="shop.html">
-                  <i className="fa fa-angle-right mr-2"></i>Our Shop
-                </a>
-                <a className="text-dark mb-2" href="detail.html">
-                  <i className="fa fa-angle-right mr-2"></i>Shop Detail
-                </a>
-                <a className="text-dark mb-2" href="cart.html">
-                  <i className="fa fa-angle-right mr-2"></i>Shopping Cart
-                </a>
-                <a className="text-dark mb-2" href="checkout.html">
-                  <i className="fa fa-angle-right mr-2"></i>Checkout
-                </a>
-                <a className="text-dark" href="contact.html">
-                  <i className="fa fa-angle-right mr-2"></i>Contact Us
-                </a>
-              </div>
-            </div>
+
             <div className="col-md-4 mb-5">
               <h5 className="font-weight-bold text-dark mb-4">Newsletter</h5>
-              <form action="">
+              <form onSubmit={handleSubmit}>
                 <div className="form-group">
                   <input
                     type="text"
                     className="form-control border-0 py-4"
                     placeholder="Your Name"
+                    name="name"
                     required
+                    value={values.name}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                   />
+                  <p className="help-block text-danger">{errors.name}</p>
                 </div>
                 <div className="form-group">
                   <input
                     type="email"
                     className="form-control border-0 py-4"
                     placeholder="Your Email"
+                    name="email"
                     required
+                    value={values.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                   />
+                  <p className="help-block text-danger">{errors.email}</p>
                 </div>
                 <div>
                   <button
@@ -129,7 +118,7 @@ const Footer = () => {
           </p>
         </div>
         <div className="col-md-6 px-xl-0 text-center text-md-right">
-          <img className="img-fluid" src="/img/payments.png" alt="" />
+          {/* <img className="img-fluid" src="/img/payments.png" alt="" /> */}
         </div>
       </div>
     </div>

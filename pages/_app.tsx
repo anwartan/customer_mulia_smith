@@ -6,7 +6,8 @@ import Cookies from "js-cookie";
 import Topbar from "../components/Topbar";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import routes from "../routes";
+import routes from "../config/Routes";
+import { WishlistProvider } from "../utils/WishlistContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -15,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     const guestRoutes = ["/login", "/register"];
-    const authRoute = ["/cart", "/wishlist"];
+    const authRoute = ["/cart"];
     const token = Cookies.get("token");
     if (!token || token == "") {
       if (authRoute.includes(router.pathname)) {
@@ -34,12 +35,21 @@ function MyApp({ Component, pageProps }: AppProps) {
   }
 
   return (
-    <div>
-      <Topbar></Topbar>
-      <Navbar showCarousel={pathname === routes.home}></Navbar>
-      <Component {...pageProps} />
-      <Footer></Footer>
-    </div>
+    <WishlistProvider>
+      <div>
+        <Topbar></Topbar>
+        <Navbar showCarousel={pathname === routes.home}></Navbar>
+        <Component {...pageProps} />
+        <Footer></Footer>
+        <a
+          href="#"
+          className="btn btn-primary back-to-top"
+          style={{ display: "inline" }}
+        >
+          <i className="fa fa-angle-double-up"></i>
+        </a>
+      </div>
+    </WishlistProvider>
   );
 }
 

@@ -6,13 +6,23 @@ import Pagination from "../Paging";
 import { Callback } from "../../utils/types";
 import Link from "next/link";
 import SkeletonLayout, { Skeleton, SkeletonItem } from "../Skeleton";
+import { FetchValue, useFetch } from "../../utils/UseFetch";
+import Box from "../Base/Box";
+import ShopProductItem, {
+  ShopProductItemEmptyState,
+  ShopProductItemSkeleton,
+} from "./ShopProductItem";
+import apiUrls from "../../config/ApiUrls";
+import HttpService from "../../services/http.service";
+import { WishlistItem } from "../../pages/wishlist";
 
 interface props {
+  product: FetchValue<PagingPage<Product>>;
   data: PagingPage<Product> | null;
   search: string;
   sort: string;
-  wishlist: boolean;
-  onWishList: Callback<boolean>;
+  wishlist: Array<WishlistItem>;
+  onWishList: Callback<string>;
   onSearch: Callback<string>;
   onSort: Callback<string>;
   onPage: Callback<number>;
@@ -22,6 +32,7 @@ export const SORT_NEWEST = "Newest";
 export const SORT_OLDEST = "Oldest";
 
 const ShopProduct = ({
+  product,
   data,
   search = "",
   sort,
@@ -32,7 +43,13 @@ const ShopProduct = ({
   onPage,
 }: props) => {
   const sorts = [SORT_NEWEST, SORT_OLDEST];
+
   const [searchTerm, setSearchTerm] = useState(search);
+
+  const isExistWishlist = (item: Product): boolean => {
+    return wishlist.findIndex((x) => x.product.sku === item.sku) !== -1;
+  };
+
   return (
     <div className="col-lg-9 col-md-12">
       <div className="row pb-3">
@@ -94,64 +111,22 @@ const ShopProduct = ({
             </div>
           </div>
         </div>
-        {data?.data.map((item, index) => (
-          <div key={index} className="col-lg-4 col-md-6 col-sm-12 pb-1">
-            <div className="card product-item border-0 mb-4">
-              <div className="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                <Image
-                  className="img-fluid w-100"
-                  width={500}
-                  height={500}
-                  src={item.full_image_path}
-                  alt={item.image_path}
-                />
-                <div
-                  className="p-2"
-                  style={{
-                    position: "absolute",
-                    zIndex: 100,
-                    top: 0,
-                    right: 0,
-                  }}
-                >
-                  <a
-                    href="javascript:void(0)"
-                    onClick={() => {
-                      onWishList(!wishlist);
-                    }}
-                  >
-                    <i
-                      className={`${
-                        wishlist ? "fas" : "far"
-                      } fa-heart text-primary`}
-                    ></i>
-                  </a>
-                </div>
-              </div>
-              <div className="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                <h6 className="text-truncate mb-3">{item.product_name}</h6>
-                <div className="d-flex justify-content-center">
-                  <h6>$123.00</h6>
-                  <h6 className="text-muted ml-2">
-                    <del>$123.00</del>
-                  </h6>
-                </div>
-              </div>
-              <div className="card-footer d-flex justify-content-between bg-light border">
-                <Link
-                  href={`/shop/${item.sku}`}
-                  className="btn btn-sm text-dark p-0"
-                >
-                  <i className="fas fa-eye text-primary mr-1"></i>View Detail
-                </Link>
-                {/* <a href="" className="btn btn-sm text-dark p-0">
-                  <i className="fas fa-shopping-cart text-primary mr-1"></i>Add
-                  To Cart
-                </a> */}
-              </div>
+        <Box
+          data={product}
+          emptyState={<ShopProductItemEmptyState></ShopProductItemEmptyState>}
+          placeholder={<ShopProductItemSkeleton></ShopProductItemSkeleton>}
+        >
+          {product?.data?.data?.map((item, index) => (
+            <div key={index} className="col-lg-4 col-md-6 col-sm-12 pb-1">
+              <ShopProductItem
+                item={item}
+                wishList={isExistWishlist(item)}
+                onWishList={onWishList}
+              ></ShopProductItem>
             </div>
-          </div>
-        ))}
+          ))}
+        </Box>
+
         <div className="col-12 pb-1">
           <Pagination
             currentPage={data?.pagination.current_page ?? 1}

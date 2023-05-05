@@ -10,7 +10,6 @@ const NavItem = ({ href, title }) => {
     return field === state;
   };
   useEffect(() => {
-    console.log(asPath);
     setActive(isActive(href, asPath));
   }, [href, asPath]);
 

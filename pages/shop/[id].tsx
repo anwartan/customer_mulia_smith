@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import apiUrls from "../../apiUrls";
+import apiUrls from "../../config/ApiUrls";
 import { useFetch } from "../../utils/UseFetch";
 import { Product } from "./shop.model";
 import Image from "next/image";

@@ -1,14 +1,16 @@
 @import "../public/css/style.min.css";
 @import "../public/lib/owlcarousel/assets/owl.carousel.min.css";
-/* html,
+
+@import url("../public/css/font.css");
+
+html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  /* padding: 0;
+  margin: 0; */
+  font-family: "CormorantInfant", sans-serif;
 }
 
-a {
+/* a {
   color: inherit;
   text-decoration: none;
 }
@@ -16,6 +18,10 @@ a {
 * {
   box-sizing: border-box;
 } */
+
+.dancing-script-font {
+  font-family: "DancingScript";
+}
 
 .skeleton {
   animation: skeleton-loading 1s linear infinite alternate;
@@ -31,7 +37,6 @@ a {
 }
 
 .skeleton-item {
-  margin-bottom: 0.5rem;
   border-radius: 0.25rem;
 }
 
@@ -40,4 +45,15 @@ a {
   height: 0.7rem;
   margin-bottom: 0.5rem;
   border-radius: 0.25rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import HttpService from "../../services/http.service";
+import { Callback } from "../types";
 
 type QueryParams = { [key: string]: string };
 
@@ -11,14 +12,16 @@ export interface FetchValue<T> {
 
 export const useFetch = <T>(
   url: string,
-  queryParams: QueryParams = {}
+  queryParams: QueryParams = {},
+  callback: Callback<T> = () => {}
 ): FetchValue<T> => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const params = queryParams
-    ? `?${new URLSearchParams(queryParams).toString()}`
-    : "";
+  const params =
+    Object.keys(queryParams).length > 0
+      ? `?${new URLSearchParams(queryParams).toString()}`
+      : "";
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
@@ -30,6 +33,9 @@ export const useFetch = <T>(
           setData(data);
         } else {
           setError(data);
+        }
+        if (callback) {
+          callback(data);
         }
       } catch (error) {
         setError(error);

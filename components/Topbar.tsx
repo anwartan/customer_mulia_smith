@@ -2,10 +2,14 @@ import { GetServerSideProps } from "next";
 import AuthService from "../services/auth.service";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import routes from "../routes";
+import routes from "../config/Routes";
+import { useWishlistContext } from "../utils/WishlistContext";
+import Link from "next/link";
 
 const Topbar = () => {
   const router = useRouter();
+
+  const wishlist = useWishlistContext();
 
   const { search } = router.query;
 
@@ -60,11 +64,8 @@ const Topbar = () => {
       <div className="row align-items-center py-3 px-xl-5">
         <div className="col-lg-3 d-none d-lg-block">
           <a href="" className="text-decoration-none">
-            <h1 className="m-0 display-5 font-weight-semi-bold">
-              <span className="text-primary font-weight-bold border px-3 mr-1">
-                E
-              </span>
-              Shopper
+            <h1 className="m-0 display-5 font-weight-semi-bold dancing-script-font">
+              Mulia Smith
             </h1>
           </a>
         </div>
@@ -95,18 +96,19 @@ const Topbar = () => {
             </div>
           </form>
         </div>
-        {AuthService.isLogin() && (
-          <div className="col-lg-3 col-6 text-right">
+
+        <div className="col-lg-3 col-6 text-right">
+          <Link href={routes.wishlist} className="btn border">
+            <i className="fas fa-heart text-primary"></i>
+            <span className="badge">{wishlist.wishlist.length}</span>
+          </Link>
+          {/* {AuthService.isLogin() && (
             <a href="" className="btn border">
-              <i className="fas fa-heart text-primary"></i>
-              <span className="badge">0</span>
-            </a>
-            {/* <a href="" className="btn border">
               <i className="fas fa-shopping-cart text-primary"></i>
               <span className="badge">0</span>
-            </a> */}
-          </div>
-        )}
+            </a> 
+            )} */}
+        </div>
       </div>
     </div>
   );

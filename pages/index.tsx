@@ -16,9 +16,19 @@ const Home: NextPage = () => {
       {/* <Feature></Feature>
       <Category></Category> */}
       {/* <Offer></Offer> */}
-      <Products></Products>
+      <Products
+        label="New Arrivals"
+        products={[]}
+        wishlist={[]}
+        onWishlist={() => {}}
+      ></Products>
       <Subscribe></Subscribe>
-      {/* <Products></Products> */}
+      <Products
+        label="Best Seller"
+        products={[]}
+        wishlist={[]}
+        onWishlist={() => {}}
+      ></Products>
       {/* <Vendor></Vendor> */}
     </div>
   );

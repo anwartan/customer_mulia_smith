@@ -41,7 +41,6 @@ const Sidebar = ({ categories = [], onCheckCategory }: props) => {
   }
 
   useEffect(() => {
-    console.log(category);
     if (category) {
       setSelectedCategories(Array.isArray(category) ? category : [category]);
     } else {
@@ -303,18 +302,33 @@ const Sidebar = ({ categories = [], onCheckCategory }: props) => {
 };
 
 export const SideBarSkeleton = () => {
+  const items = [];
+
+  for (let i = 0; i < 3; i++) {
+    items.push(
+      <div
+        key={i}
+        className="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3"
+      >
+        <Skeleton></Skeleton>
+      </div>
+    );
+  }
+
   return (
     <div className="col-lg-3 col-md-12">
       <div className="border-bottom mb-4 pb-4">
         <h5 className="font-weight-semi-bold mb-4">
           <Skeleton></Skeleton>
         </h5>
-        <Skeleton></Skeleton>
-        <Skeleton></Skeleton>
-        <Skeleton></Skeleton>
+        {items}
       </div>
     </div>
   );
+};
+
+export const SidebarEmptyState = () => {
+  return <div className="col-lg-3 col-md-12"></div>;
 };
 
 export default Sidebar;

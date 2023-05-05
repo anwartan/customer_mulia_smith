@@ -28,6 +28,7 @@ class HttpService {
       if (token && token != "" && config.headers) {
         config.headers["Authorization"] = `Bearer ${token}`;
       }
+
       return config;
     });
     return api;
@@ -35,7 +36,9 @@ class HttpService {
 
   public static get = async (url: string) => {
     const api = this.api();
-    return await api.get(url);
+    return await api.get(url, {
+      withCredentials: true,
+    });
   };
   public static post = async (url: string, data: any) => {
     const api = this.api();

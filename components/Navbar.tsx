@@ -1,10 +1,25 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import AuthService from "../services/auth.service";
-import routes from "../routes";
+import routes from "../config/Routes";
 import NavItem from "./NavItem";
+import { useFetch } from "../utils/UseFetch";
+import apiUrls from "../config/ApiUrls";
+import Image from "next/image";
+
+interface Promotion {
+  uuid: string;
+  promotion_title: string;
+  promotion_description: string;
+  promotion_url: string;
+  promotion_image_url: string;
+  status: number;
+  full_image_path: string;
+}
 
 const Navbar = ({ showCarousel = false }) => {
+  const promotion = useFetch<Array<Promotion>>(apiUrls.promotionActive);
+
   return (
     <div className="container-fluid mb-5">
       <div className="row border-top px-xl-5">
@@ -75,11 +90,8 @@ const Navbar = ({ showCarousel = false }) => {
         <div className="col-lg-12">
           <nav className="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
             <a href="" className="text-decoration-none d-block d-lg-none">
-              <h1 className="m-0 display-5 font-weight-semi-bold">
-                <span className="text-primary font-weight-bold border px-3 mr-1">
-                  E
-                </span>
-                Shopper
+              <h1 className="m-0 display-5 font-weight-semi-bold dancing-script-font">
+                Mulia Smith
               </h1>
             </a>
             <button
@@ -121,7 +133,7 @@ const Navbar = ({ showCarousel = false }) => {
               {!AuthService.isLogin() && (
                 <div className="navbar-nav ml-auto py-0">
                   <NavItem href={routes.login} title={"Login"}></NavItem>
-                  <NavItem href={routes.register} title={"Register"}></NavItem>
+                  {/* <NavItem href={routes.register} title={"Register"}></NavItem> */}
                 </div>
               )}
             </div>
@@ -133,37 +145,46 @@ const Navbar = ({ showCarousel = false }) => {
               data-ride="carousel"
             >
               <div className="carousel-inner">
-                <div
-                  className="carousel-item active"
-                  style={{ height: "410px;" }}
-                >
-                  <img
-                    className="img-fluid"
-                    src="img/carousel-1.jpg"
-                    alt="Image"
-                  />
-                  <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                    <div className="p-3" style={{ maxWidth: "700px;" }}>
-                      <h4 className="text-light text-uppercase font-weight-medium mb-3">
-                        10% Off Your First Order
-                      </h4>
-                      <h3 className="display-4 text-white font-weight-semi-bold mb-4">
-                        Fashionable Dress
-                      </h3>
-                      <a href="" className="btn btn-light py-2 px-3">
-                        Shop Now
-                      </a>
+                {promotion.data?.map((item, index) => (
+                  <div
+                    key={index}
+                    className={`carousel-item ${index === 0 && "active"}`}
+                    style={{ height: "410px" }}
+                  >
+                    <Image
+                      className="img-fluid"
+                      src={item.full_image_path}
+                      alt="Image"
+                      width={300}
+                      height={300}
+                    />
+                    <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                      <div className="p-3" style={{ maxWidth: "700px" }}>
+                        <h4 className="text-light text-uppercase font-weight-medium mb-3">
+                          {item.promotion_description}
+                        </h4>
+                        <h3 className="display-4 text-white font-weight-semi-bold mb-4">
+                          {item.promotion_title}
+                        </h3>
+                        <a
+                          href={item.promotion_url}
+                          className="btn btn-light py-2 px-3"
+                        >
+                          Shop Now
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="carousel-item" style={{ height: "410px;" }}>
+                ))}
+
+                {/* <div className="carousel-item" style={{ height: "410px" }}>
                   <img
                     className="img-fluid"
                     src="img/carousel-2.jpg"
                     alt="Image"
                   />
                   <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                    <div className="p-3" style={{ maxWidth: "700px;" }}>
+                    <div className="p-3" style={{ maxWidth: "700px" }}>
                       <h4 className="text-light text-uppercase font-weight-medium mb-3">
                         10% Off Your First Order
                       </h4>
@@ -175,7 +196,7 @@ const Navbar = ({ showCarousel = false }) => {
                       </a>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
               <a
                 className="carousel-control-prev"
