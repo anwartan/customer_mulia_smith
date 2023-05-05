@@ -1,10 +1,9 @@
 import { ProductAdditionalInfo } from "../../model/shop.model";
 
-
-interface props {
+interface Props {
   data?: Array<ProductAdditionalInfo>;
 }
-const AdditionalInfo = ({ data = [] }: props) => {
+const AdditionalInfo = ({ data = [] }: Props) => {
   const count = Math.floor(data.length / 2);
   const mod = data.length % 2;
   const left = data.length > 4 ? data.slice(0, count + mod) : data;

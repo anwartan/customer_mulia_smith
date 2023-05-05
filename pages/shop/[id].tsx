@@ -3,7 +3,7 @@ import apiUrls from "../../config/ApiUrls";
 import { useFetch } from "../../utils/UseFetch";
 import { Product } from "../../model/shop.model";
 import Image from "next/image";
-import AdditionalInfo from "../../components/Shop/AdditionalInfo";
+// import AdditionalInfo from "../../components/Shop/AdditionalInfo";
 import parse from "html-react-parser";
 const Detail = () => {
   const router = useRouter();
@@ -275,9 +275,9 @@ const Detail = () => {
               <div>{parse(data?.product_description ?? "")}</div>
             </div>
             <div className="tab-pane fade" id="tab-pane-2">
-              <AdditionalInfo
+              {/* <AdditionalInfo
                 data={data?.product_additional_infos}
-              ></AdditionalInfo>
+              ></AdditionalInfo> */}
             </div>
             {/* <div className="tab-pane fade" id="tab-pane-3">
               <div className="row">
