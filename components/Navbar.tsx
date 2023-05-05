@@ -178,10 +178,12 @@ const Navbar = ({ showCarousel = false }) => {
                 ))}
 
                 {/* <div className="carousel-item" style={{ height: "410px" }}>
-                  <img
+                  <Image
                     className="img-fluid"
                     src="img/carousel-2.jpg"
                     alt="Image"
+                    width={300}
+                    height={300}
                   />
                   <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div className="p-3" style={{ maxWidth: "700px" }}>

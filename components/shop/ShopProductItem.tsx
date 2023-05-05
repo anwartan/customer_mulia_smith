@@ -68,7 +68,7 @@ const ShopProductItem = ({ wishList, item, onWishList }: Props) => {
   );
 };
 
-export const ShopProductItemEmptyState = () => {
+const ShopProductItemEmptyState = () => {
   return (
     <div className="col-12 d-flex align-items-center flex-column pb-1">
       <Image
@@ -82,7 +82,7 @@ export const ShopProductItemEmptyState = () => {
   );
 };
 
-export const ShopProductItemSkeleton = () => {
+const ShopProductItemSkeleton = () => {
   const items = [];
 
   for (let i = 0; i < 3; i++) {
@@ -106,4 +106,4 @@ export const ShopProductItemSkeleton = () => {
   return <>{items}</>;
 };
 
-export default ShopProductItem;
+export { ShopProductItem, ShopProductItemEmptyState, ShopProductItemSkeleton };

@@ -7,7 +7,8 @@ import { PagingPage } from "../Paging/paging.model";
 import { WishlistItem } from "../../pages/wishlist";
 import { FetchValue } from "../../utils/UseFetch";
 import Box from "../Base/Box";
-import ShopProductItem, {
+import {
+  ShopProductItem,
   ShopProductItemEmptyState,
   ShopProductItemSkeleton,
 } from "./ShopProductItem";
