@@ -1,7 +1,7 @@
 import { Product } from "../model/shop.model";
 import { WishlistItem } from "../pages/wishlist";
 import { Callback } from "../utils/types";
-import ShopProductItem from "./Shop/ShopProductItem";
+// import ShopProductItem from "./Shop/ShopProductItem";
 
 interface Props {
   wishlist: Array<WishlistItem>;
@@ -22,7 +22,7 @@ function Products({ wishlist, label, products, onWishlist }: Props) {
         </h2>
       </div>
       <div className="row px-xl-5 pb-3">
-        {products.map((item, index) => (
+        {/* {products.map((item, index) => (
           <div key={index} className="col-lg-3 col-md-6 col-sm-12 pb-1">
             <ShopProductItem
               item={item}
@@ -30,7 +30,7 @@ function Products({ wishlist, label, products, onWishlist }: Props) {
               onWishList={onWishlist}
             ></ShopProductItem>
           </div>
-        ))}
+        ))} */}
       </div>
     </div>
   );

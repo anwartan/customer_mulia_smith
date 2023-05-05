@@ -1,11 +1,10 @@
 import Image from "next/image";
-import { Product } from "../../model/shop.model";
-import { Callback } from "../../utils/types";
 import Link from "next/link";
-import Skeleton from "../Skeleton";
 import routes from "../../config/Routes";
-import { ReactSVG } from "react-svg";
+import { Product } from "../../model/shop.model";
 import EmptyProduct from "../../public/icon/empty_product.svg";
+import { Callback } from "../../utils/types";
+import Skeleton from "../Skeleton";
 interface Props {
   wishList: boolean;
   item: Product;

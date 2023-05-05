@@ -1,13 +1,8 @@
-import Image from "next/image";
-import apiUrls from "../../config/ApiUrls";
-import { useFetch } from "../../utils/UseFetch";
-import { Product } from "../../model/shop.model";
-import { useWishlistContext } from "../../utils/WishlistContext";
-import Link from "next/link";
-import routes from "../../config/Routes";
 import WishlistItemTableBody, {
   WishlistItemTableBodyEmptyState,
 } from "../../components/Wishlist/WishlistItemTableBody";
+import { Product } from "../../model/shop.model";
+import { useWishlistContext } from "../../utils/WishlistContext";
 
 export interface WishlistItem {
   product: Product;
