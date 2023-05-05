@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 function Category() {
   return (
     <div className="container-fluid pt-5">
@@ -12,7 +14,13 @@ function Category() {
               href=""
               className="cat-img position-relative overflow-hidden mb-3"
             >
-              <img className="img-fluid" src="img/cat-1.jpg" alt="" />
+              <Image
+                className="img-fluid"
+                src="img/cat-1.jpg"
+                alt=""
+                width={300}
+                height={300}
+              />
             </a>
             <h5 className="font-weight-semi-bold m-0">Men's dresses</h5>
           </div>
@@ -27,7 +35,13 @@ function Category() {
               href=""
               className="cat-img position-relative overflow-hidden mb-3"
             >
-              <img className="img-fluid" src="img/cat-2.jpg" alt="" />
+              <Image
+                className="img-fluid"
+                src="img/cat-1.jpg"
+                alt=""
+                width={300}
+                height={300}
+              />
             </a>
             <h5 className="font-weight-semi-bold m-0">Women's dresses</h5>
           </div>
@@ -42,7 +56,13 @@ function Category() {
               href=""
               className="cat-img position-relative overflow-hidden mb-3"
             >
-              <img className="img-fluid" src="img/cat-3.jpg" alt="" />
+              <Image
+                className="img-fluid"
+                src="img/cat-1.jpg"
+                alt=""
+                width={300}
+                height={300}
+              />
             </a>
             <h5 className="font-weight-semi-bold m-0">Baby's dresses</h5>
           </div>
@@ -57,7 +77,13 @@ function Category() {
               href=""
               className="cat-img position-relative overflow-hidden mb-3"
             >
-              <img className="img-fluid" src="img/cat-4.jpg" alt="" />
+              <Image
+                className="img-fluid"
+                src="img/cat-1.jpg"
+                alt=""
+                width={300}
+                height={300}
+              />
             </a>
             <h5 className="font-weight-semi-bold m-0">Accerssories</h5>
           </div>
@@ -72,7 +98,13 @@ function Category() {
               href=""
               className="cat-img position-relative overflow-hidden mb-3"
             >
-              <img className="img-fluid" src="img/cat-5.jpg" alt="" />
+              <Image
+                className="img-fluid"
+                src="img/cat-1.jpg"
+                alt=""
+                width={300}
+                height={300}
+              />
             </a>
             <h5 className="font-weight-semi-bold m-0">Bags</h5>
           </div>
@@ -87,7 +119,13 @@ function Category() {
               href=""
               className="cat-img position-relative overflow-hidden mb-3"
             >
-              <img className="img-fluid" src="img/cat-6.jpg" alt="" />
+              <Image
+                className="img-fluid"
+                src="img/cat-1.jpg"
+                alt=""
+                width={300}
+                height={300}
+              />
             </a>
             <h5 className="font-weight-semi-bold m-0">Shoes</h5>
           </div>

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 function Vendor() {
   return (
     <div className="container-fluid py-5">
@@ -5,28 +7,28 @@ function Vendor() {
         <div className="col">
           <div className="owl-carousel">
             <div className="vendor-item border p-4">
-              <img src="img/vendor-1.jpg" alt="" />
+              <Image src="img/vendor-1.jpg" alt="" width={300} height={300} />
             </div>
             <div className="vendor-item border p-4">
-              <img src="img/vendor-2.jpg" alt="" />
+              <Image src="img/vendor-1.jpg" alt="" width={300} height={300} />
             </div>
             <div className="vendor-item border p-4">
-              <img src="img/vendor-3.jpg" alt="" />
+              <Image src="img/vendor-1.jpg" alt="" width={300} height={300} />
             </div>
             <div className="vendor-item border p-4">
-              <img src="img/vendor-4.jpg" alt="" />
+              <Image src="img/vendor-1.jpg" alt="" width={300} height={300} />
             </div>
             <div className="vendor-item border p-4">
-              <img src="img/vendor-5.jpg" alt="" />
+              <Image src="img/vendor-1.jpg" alt="" width={300} height={300} />
             </div>
             <div className="vendor-item border p-4">
-              <img src="img/vendor-6.jpg" alt="" />
+              <Image src="img/vendor-1.jpg" alt="" width={300} height={300} />
             </div>
             <div className="vendor-item border p-4">
-              <img src="img/vendor-7.jpg" alt="" />
+              <Image src="img/vendor-1.jpg" alt="" width={300} height={300} />
             </div>
             <div className="vendor-item border p-4">
-              <img src="img/vendor-8.jpg" alt="" />
+              <Image src="img/vendor-1.jpg" alt="" width={300} height={300} />
             </div>
           </div>
         </div>

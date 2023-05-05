@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 function cart() {
   return (
     <div className="container-fluid pt-5">
@@ -16,10 +18,11 @@ function cart() {
             <tbody className="align-middle">
               <tr>
                 <td className="align-middle">
-                  <img
+                  <Image
                     src="img/product-1.jpg"
                     alt=""
-                    style={{ width: "50px" }}
+                    width={50}
+                    height={50}
                   />{" "}
                   Colorful Stylish Shirt
                 </td>
@@ -55,10 +58,11 @@ function cart() {
               </tr>
               <tr>
                 <td className="align-middle">
-                  <img
-                    src="img/product-2.jpg"
+                  <Image
+                    src="img/product-1.jpg"
                     alt=""
-                    style={{ width: "50px" }}
+                    width={50}
+                    height={50}
                   />{" "}
                   Colorful Stylish Shirt
                 </td>
@@ -94,10 +98,11 @@ function cart() {
               </tr>
               <tr>
                 <td className="align-middle">
-                  <img
-                    src="img/product-3.jpg"
+                  <Image
+                    src="img/product-1.jpg"
                     alt=""
-                    style={{ width: "50px" }}
+                    width={50}
+                    height={50}
                   />{" "}
                   Colorful Stylish Shirt
                 </td>
@@ -133,10 +138,11 @@ function cart() {
               </tr>
               <tr>
                 <td className="align-middle">
-                  <img
-                    src="img/product-4.jpg"
+                  <Image
+                    src="img/product-1.jpg"
                     alt=""
-                    style={{ width: "50px" }}
+                    width={50}
+                    height={50}
                   />{" "}
                   Colorful Stylish Shirt
                 </td>
@@ -172,10 +178,11 @@ function cart() {
               </tr>
               <tr>
                 <td className="align-middle">
-                  <img
-                    src="img/product-5.jpg"
+                  <Image
+                    src="img/product-1.jpg"
                     alt=""
-                    style={{ width: "50px" }}
+                    width={50}
+                    height={50}
                   />{" "}
                   Colorful Stylish Shirt
                 </td>
