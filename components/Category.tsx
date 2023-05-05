@@ -22,7 +22,7 @@ function Category() {
                 height={300}
               />
             </a>
-            <h5 className="font-weight-semi-bold m-0">Men's dresses</h5>
+            <h5 className="font-weight-semi-bold m-0">Men`&apos;`s dresses</h5>
           </div>
         </div>
         <div className="col-lg-4 col-md-6 pb-1">
@@ -43,7 +43,9 @@ function Category() {
                 height={300}
               />
             </a>
-            <h5 className="font-weight-semi-bold m-0">Women's dresses</h5>
+            <h5 className="font-weight-semi-bold m-0">
+              Women`&apos;`s dresses
+            </h5>
           </div>
         </div>
         <div className="col-lg-4 col-md-6 pb-1">
@@ -64,7 +66,7 @@ function Category() {
                 height={300}
               />
             </a>
-            <h5 className="font-weight-semi-bold m-0">Baby's dresses</h5>
+            <h5 className="font-weight-semi-bold m-0">Baby`&apos;`s dresses</h5>
           </div>
         </div>
         <div className="col-lg-4 col-md-6 pb-1">

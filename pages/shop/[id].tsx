@@ -279,19 +279,19 @@ const Detail = () => {
                 data={data?.product_additional_infos}
               ></AdditionalInfo>
             </div>
-            <div className="tab-pane fade" id="tab-pane-3">
+            {/* <div className="tab-pane fade" id="tab-pane-3">
               <div className="row">
                 <div className="col-md-6">
                   <h4 className="mb-4">
                     1 review for "Colorful Stylish Shirt"
                   </h4>
                   <div className="media mb-4">
-                    {/* <img
+                    <img
                       src="../img/user.jpg"
                       alt="Image"
                       className="img-fluid mr-3 mt-1"
                       style={{ width: "45px" }}
-                    /> */}
+                    />
                     <div className="media-body">
                       <h6>
                         John Doe
@@ -359,7 +359,7 @@ const Detail = () => {
                   </form>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
