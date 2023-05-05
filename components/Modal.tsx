@@ -1,6 +1,10 @@
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-function Modal({ show, children }) {
+interface Props {
+  show: boolean;
+  children: ReactNode;
+}
+function Modal({ show, children }: Props) {
   const [isBrowser, setIsBrowser] = useState(false);
 
   useEffect(() => {
@@ -21,10 +25,11 @@ function Modal({ show, children }) {
   ) : null;
 
   if (isBrowser) {
-    return ReactDOM.createPortal(
-      modalContent,
-      document.getElementById("modal-root")
-    );
+    const element: HTMLElement | null = document.getElementById("my-element");
+    if (element !== null) {
+      return ReactDOM.createPortal(modalContent, element);
+    }
+    return null;
   } else {
     return null;
   }

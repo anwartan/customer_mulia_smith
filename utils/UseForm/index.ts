@@ -64,7 +64,7 @@ const useForm = (
       } else {
         setValues(initialValues);
       }
-    } catch (error) {
+    } catch (error: any) {
       if (error.response.data.meta.message == "Validation errors") {
         const apiErrors: FormErrors = {};
         const dataErrors = error.response.data.data;

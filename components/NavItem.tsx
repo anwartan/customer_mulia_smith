@@ -3,7 +3,12 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-const NavItem = ({ href, title }) => {
+interface Props {
+  href: string;
+  title: string;
+}
+
+const NavItem = ({ href, title }: Props) => {
   const { asPath } = useRouter();
   const [active, setActive] = useState(false);
   const isActive = (field: string, state: string) => {

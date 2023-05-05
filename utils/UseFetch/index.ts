@@ -37,7 +37,7 @@ export const useFetch = <T>(
         if (callback) {
           callback(data);
         }
-      } catch (error) {
+      } catch (error: any) {
         setError(error);
       } finally {
         setIsLoading(false);
