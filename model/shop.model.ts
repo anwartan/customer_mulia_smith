@@ -1,4 +1,4 @@
-import ProductStatusEnum from "../../enums/ProductStatusEnum";
+import ProductStatusEnum from "../enums/ProductStatusEnum";
 
 export interface ProductAdditionalInfo {
   label: string;

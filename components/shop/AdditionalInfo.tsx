@@ -1,4 +1,5 @@
-import { ProductAdditionalInfo } from "../../pages/shop/shop.model";
+import { ProductAdditionalInfo } from "../../model/shop.model";
+
 
 interface props {
   data?: Array<ProductAdditionalInfo>;

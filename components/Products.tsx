@@ -1,4 +1,4 @@
-import { Product } from "../pages/shop/shop.model";
+import { Product } from "../model/shop.model";
 import { WishlistItem } from "../pages/wishlist";
 import { Callback } from "../utils/types";
 import ShopProductItem from "./Shop/ShopProductItem";

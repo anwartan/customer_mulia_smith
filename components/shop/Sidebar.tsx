@@ -1,5 +1,5 @@
 import { ChangeEvent, use, useEffect, useState } from "react";
-import { Category } from "../../pages/shop/shop.model";
+import { Category } from "../../model/shop.model";
 import { Callback } from "../../utils/types";
 import { useRouter } from "next/router";
 import Skeleton from "../Skeleton";

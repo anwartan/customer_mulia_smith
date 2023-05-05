@@ -1,20 +1,17 @@
-import { ChangeEventHandler, ReactNode, use, useEffect, useState } from "react";
-import { Product } from "../../pages/shop";
-import { PagingPage } from "../Paging/paging.model";
-import Image from "next/image";
-import Pagination from "../Paging";
+import { useState } from "react";
+
 import { Callback } from "../../utils/types";
-import Link from "next/link";
-import SkeletonLayout, { Skeleton, SkeletonItem } from "../Skeleton";
-import { FetchValue, useFetch } from "../../utils/UseFetch";
+import Pagination from "../Paging";
+import { PagingPage } from "../Paging/paging.model";
+
+import { WishlistItem } from "../../pages/wishlist";
+import { FetchValue } from "../../utils/UseFetch";
 import Box from "../Base/Box";
 import ShopProductItem, {
   ShopProductItemEmptyState,
   ShopProductItemSkeleton,
 } from "./ShopProductItem";
-import apiUrls from "../../config/ApiUrls";
-import HttpService from "../../services/http.service";
-import { WishlistItem } from "../../pages/wishlist";
+import { Product } from "../../model/shop.model";
 
 interface props {
   product: FetchValue<PagingPage<Product>>;

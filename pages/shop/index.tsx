@@ -4,7 +4,7 @@ import { useFetch } from "../../utils/UseFetch";
 import apiUrls from "../../config/ApiUrls";
 import { useEffect, useState } from "react";
 import { PagingPage } from "../../components/Paging/paging.model";
-import { Category, Product } from "./shop.model";
+import { Category, Product } from "../../model/shop.model";
 import Box from "../../components/Base/Box";
 import { useRouter } from "next/router";
 import Sidebar, {

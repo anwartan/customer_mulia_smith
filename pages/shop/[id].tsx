@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import apiUrls from "../../config/ApiUrls";
 import { useFetch } from "../../utils/UseFetch";
-import { Product } from "./shop.model";
+import { Product } from "../../model/shop.model";
 import Image from "next/image";
 import AdditionalInfo from "../../components/Shop/AdditionalInfo";
 import parse from "html-react-parser";

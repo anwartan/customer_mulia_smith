@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Product } from "../../pages/shop/shop.model";
+import { Product } from "../../model/shop.model";
 import { Callback } from "../../utils/types";
 import Link from "next/link";
 import Skeleton from "../Skeleton";
