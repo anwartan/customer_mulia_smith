@@ -1,4 +1,4 @@
-import { ChangeEvent, use, useEffect, useState } from "react";
+import { ChangeEvent, ReactNode, use, useEffect, useState } from "react";
 import { Category } from "../../model/shop.model";
 import { Callback } from "../../utils/types";
 import { useRouter } from "next/router";
@@ -26,7 +26,7 @@ const Sidebar = ({ categories = [], onCheckCategory }: props) => {
   function handleCategoryChange(event: ChangeEvent<HTMLInputElement>) {
     const categoryValue = event.target.value;
     const isChecked = event.target.checked;
-    let newCategory = [];
+    let newCategory: String[] = [];
     if (isChecked) {
       newCategory = [...selectedCategories, categoryValue];
     } else {
@@ -302,7 +302,7 @@ const Sidebar = ({ categories = [], onCheckCategory }: props) => {
 };
 
 export const SideBarSkeleton = () => {
-  const items = [];
+  const items: ReactNode[] = [];
 
   for (let i = 0; i < 3; i++) {
     items.push(

@@ -5,6 +5,7 @@ import { Product } from "../../model/shop.model";
 import EmptyProduct from "../../public/icon/empty_product.svg";
 import { Callback } from "../../utils/types";
 import Skeleton from "../Skeleton";
+import { ReactNode } from "react";
 interface Props {
   wishList: boolean;
   item: Product;
@@ -83,7 +84,7 @@ const ShopProductItemEmptyState = () => {
 };
 
 const ShopProductItemSkeleton = () => {
-  const items = [];
+  const items: ReactNode[] = [];
 
   for (let i = 0; i < 3; i++) {
     items.push(
