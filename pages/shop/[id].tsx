@@ -3,7 +3,7 @@ import apiUrls from "../../config/ApiUrls";
 import { useFetch } from "../../utils/UseFetch";
 import { Product } from "../../model/shop.model";
 import Image from "next/image";
-import AdditionalInfo from "../../components/Shop/AdditionalInfo";
+import AdditionalInfo from "../../components/shop/AdditionalInfo";
 import parse from "html-react-parser";
 const Detail = () => {
   const router = useRouter();

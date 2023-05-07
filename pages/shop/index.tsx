@@ -10,8 +10,8 @@ import { useRouter } from "next/router";
 import Sidebar, {
   SideBarSkeleton,
   SidebarEmptyState,
-} from "../../components/Shop/Sidebar";
-import ShopProduct from "../../components/Shop/ShopProduct";
+} from "../../components/shop/Sidebar";
+import ShopProduct from "../../components/shop/ShopProduct";
 import { useWishlistContext } from "../../utils/WishlistContext";
 
 const Shop: NextPage<Product> = ({}) => {
