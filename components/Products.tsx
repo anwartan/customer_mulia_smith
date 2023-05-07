@@ -1,7 +1,7 @@
 import { Product } from "../model/shop.model";
 import { WishlistItem } from "../pages/wishlist";
 import { Callback } from "../utils/types";
-import { ShopProductItem } from "@components";
+import { ShopProductItem } from "./Shop/ShopProductItem";
 
 interface Props {
   wishlist: Array<WishlistItem>;
