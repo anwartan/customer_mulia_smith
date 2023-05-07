@@ -7,7 +7,7 @@ export interface props {
 }
 
 const Pagination = ({ currentPage, totalPages, onPageChange }: props) => {
-  const pages = [];
+  const pages: number[] = [];
 
   // Add previous page link
   if (currentPage > 1) {
