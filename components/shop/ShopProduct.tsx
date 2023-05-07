@@ -11,7 +11,7 @@ import {
   ShopProductItem,
   ShopProductItemEmptyState,
   ShopProductItemSkeleton,
-} from "./ShopProductItem";
+} from ".";
 import { Product } from "../../model/shop.model";
 
 interface props {
