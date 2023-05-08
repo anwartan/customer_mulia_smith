@@ -2,4 +2,4 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/muliasmi/public_html
 
-    - /usr/bin/rsync -Paz --delete ./out $DEPLOYPATH --update
+    - /usr/bin/rsync -Paz --delete ./out/* $DEPLOYPATH --update
