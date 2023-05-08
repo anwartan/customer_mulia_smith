@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "DancingScript";
+  src: url("../font/DancingScript-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CormorantInfant";
+  src: url("../font/CormorantInfant-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
