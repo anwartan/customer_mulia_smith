@@ -1,5 +1,5 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/muliasmi/app
+    - export DEPLOYPATH=/home/muliasmi/public_html
 
-    - /usr/bin/rsync -Paz * $DEPLOYPATH --update
+    - /usr/bin/rsync -Paz --delete ./out $DEPLOYPATH --update
